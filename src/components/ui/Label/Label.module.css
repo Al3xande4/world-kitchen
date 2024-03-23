@@ -1,0 +1,12 @@
+.label {
+	color: var(--primary-color);
+	font-weight: 600;
+	font-style: normal;
+	font-size: 1.25rem;
+	line-height: normal;
+	letter-spacing: 1.5px;
+}
+
+.label:hover {
+	cursor: pointer;
+}

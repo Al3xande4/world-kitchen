@@ -1,0 +1,47 @@
+.button {
+	transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+	transition-duration: .25s;
+	transition-property: all;
+
+	color: var(--light-color);
+	font-weight: 700;
+	font-size: 18px;
+
+	padding: 0 2.5rem;
+	height: 3rem;
+
+	border-radius: 3.125rem;
+	border: 1.5px solid transparent;
+	outline: none;
+
+	background-color: transparent;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.button:hover{
+	cursor: pointer;
+}
+
+.filled {
+	background-color: var(--primary-color);
+}
+
+.filled:hover {
+	background-color: rgb(24, 49, 42);
+	color: rgb(255, 247, 229)
+}
+
+.outlined {
+	background-color: none;
+	border-color: var(--primary-color);
+	color: var(--primary-color);
+	border-width: 2px;
+}
+
+.outlined:hover {
+	background-color: var(--primary-color);
+	color: rgb(255, 247, 229)
+}

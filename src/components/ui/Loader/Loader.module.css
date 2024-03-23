@@ -1,0 +1,28 @@
+.wrapper {
+	margin: 100px auto;
+	width: 100px;
+	aspect-ratio: 1 / 1;
+
+	border: 8px solid rgba(190, 184, 184, 0.75);
+	border-top-color: var(--primary-color);
+	border-radius: 50%;
+
+	animation-name: spin;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+
+}
+
+.big {
+	width: 200px;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+	
+}

@@ -1,0 +1,17 @@
+.register {
+	background-color: rgb(167, 209, 197);
+	height: 100%;
+	padding: 100px 0;
+}
+
+.register-inner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.title {
+	color: var(--primary-color);
+	font-weight: 800;
+	margin-bottom: 1rem;
+}

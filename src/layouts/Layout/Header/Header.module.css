@@ -1,0 +1,74 @@
+.header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    font-size: 18px;
+	color: var(--primary-color);
+	background-color: var(--neutural-color);
+}
+
+.container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 20px 50px;
+	max-height: 100px;
+}
+
+.link {
+	font-size: 18px;
+	font-weight: 600;
+	line-height: normal;
+	font-style: normal;
+
+	transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+	transition-duration: .25s;
+	transition-property: all;
+	border-bottom: 2px solid transparent;
+}
+
+.active {
+	border-color: var(--primary-color);
+}
+
+.link:hover, .active:hover {
+	border-color: var(--grey-color);
+	color: var(--grey-color);
+}
+
+.logo-img {
+	max-height: 100px;
+	background-color: transparent;
+}
+
+.navigation {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+}
+
+.account {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+
+	transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+	transition-duration: .25s;
+	transition-property: all;
+	fill: var(--primary-color);
+}
+
+.account > img {
+	width: 28px;
+	height: 28px;
+}
+
+.account:hover > .link {
+	border-color: var(--grey-color);
+	color: var(--grey-color);
+}
+
+.account.active > .link {
+	border-color: var(--primary-color);
+}
+

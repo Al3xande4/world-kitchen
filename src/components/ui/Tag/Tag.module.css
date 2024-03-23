@@ -1,0 +1,7 @@
+.tag {
+	background-color: var(--light-color);
+	padding: 5px 10px;
+	border-radius: 4rem;
+	text-align: center;
+	filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.8));
+}
