@@ -1,4 +1,4 @@
-import { User } from './User';
+import { User } from '../core/User';
 
 export interface LoginResponse {
 	user: User;

@@ -1,3 +1,4 @@
+import { Step } from './Step';
 import { User } from './User';
 
 export interface Recipe {
@@ -18,4 +19,8 @@ export interface Recipe {
 	authorId: number;
 
 	author: User;
+
+	createdAt: Date;
+
+	steps: Step[];
 }

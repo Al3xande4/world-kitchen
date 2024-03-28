@@ -7,12 +7,7 @@
 }
 .item:nth-child(3n + 2) {
 	transition-delay: 200ms;
-	animation-delay: 1000ms;
-	animation-duration: 10s;
 }
 .item:nth-child(3n + 3) {
-	transition-delay: 400ms;
-	animation-delay: 2000ms;
-}
-.item:nth-child(3n + 1) {
+	transition-delay: 450ms;
 }

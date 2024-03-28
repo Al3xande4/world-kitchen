@@ -15,7 +15,7 @@ export function RecipesList({ recipes, className }: RecipesListProps) {
 			{recipes.map((el) => (
 				<RecipeItem
 					className={styles.item}
-					isFavourite={fav?.includes(el.id)}
+					isFavourite={!!fav?.find((i) => i.id == el.id)}
 					recipe={el}
 					key={el.id}
 				/>

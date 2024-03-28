@@ -21,6 +21,10 @@
 	justify-content: center;
 }
 
+.small {
+	padding: 1rem 1rem;
+}
+
 .button:hover{
 	cursor: pointer;
 }

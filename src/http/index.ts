@@ -1,6 +1,9 @@
 import axios from 'axios';
 import { loadState, saveState } from '../store/storage';
 import { USER_STATE_KEY, UserState } from '../store/user/user.state';
+import { useDispatch, useSelector } from 'react-redux';
+import { checkAuth, userActions } from '../store/user/user.slice';
+import { AppDispatch, RootState } from '../store/store';
 
 export const host = axios.create({ baseURL: 'http://localhost:3000' });
 export const authHost = axios.create({
@@ -9,7 +12,7 @@ export const authHost = axios.create({
 });
 
 authHost.interceptors.request.use((config) => {
-	const token = loadState<UserState>(USER_STATE_KEY)?.access_token;
+	const token = loadState<{ access_token: string }>('token')?.access_token;
 	config.headers.Authorization = `Bearer ${token}`;
 	return config;
 });
@@ -18,19 +21,17 @@ authHost.interceptors.response.use(
 	(config) => config,
 	async (error) => {
 		const originalRequest = error.config;
-		if (
-			error.response.status == 401 &&
-			originalRequest &&
-			!originalRequest._isRetry
-		) {
+		if (originalRequest && !originalRequest._isRetry) {
 			originalRequest._isRetry = true;
-			const response = await axios.get(
+			const { data } = await axios.get(
 				'http://localhost:3000/users/refresh',
 				{
 					withCredentials: true,
 				}
 			);
-			saveState('token', response);
+			saveState('token', {
+				access_token: data.access_token,
+			});
 			return host.request(originalRequest);
 		}
 		throw error;

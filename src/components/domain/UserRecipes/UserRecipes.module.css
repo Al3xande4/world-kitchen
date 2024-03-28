@@ -1,0 +1,77 @@
+.title {
+	font-size: 2rem;
+	-webkit-font-smoothing: antialiased;
+	line-height: 1;
+	font-weight: 800;
+
+	padding: 0;
+	margin: 0;
+	color: var(--primary-color);
+}
+
+.recipes-error {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1.25rem;
+
+	padding-bottom: 6.25rem;
+    padding-top: 6.25rem;
+
+}
+
+.text {
+	font-size: 1.25rem;
+    line-height: 1.75rem;
+	padding: 0;
+	margin: 0;
+}
+
+.list {
+	list-style: none;
+
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	padding: 0;
+
+	transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+	transition-duration: 1s;
+	transition-property: all;
+}
+
+.hidden {
+	opacity: 0;
+	visibility: hidden;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	height: 592px;
+	position: relative;
+}
+.page-controll {
+	position: absolute;
+	right:80px;
+	bottom: 20px;
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.page-count {
+	padding: 0;
+	margin: 0;
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: var(--primary-color);
+}
+
+.btn {
+	width: 40px;
+	height: 40px;
+}

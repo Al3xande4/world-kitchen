@@ -16,7 +16,7 @@ export function Header({ className }: HeaderProps) {
 
 	useEffect(() => {
 		dispatch(checkAuth());
-	}, [access_token, isAuth]);
+	}, [access_token]);
 
 	return (
 		<header className={cn(styles.header, className)}>

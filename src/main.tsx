@@ -12,10 +12,15 @@ import { Loader } from './components/ui/Loader/Loader.tsx';
 import { Provider } from 'react-redux';
 import { store } from './store/store.ts';
 import { RegisterPage } from './pages/Register/Register.tsx';
-import { AccountPage } from './pages/Account/Account.tsx';
+import { AccountPage } from './pages/Account/AccountPage.tsx';
+import { ResetPage } from './pages/Reset/Reset.tsx';
+import { initFirebase } from './helpers/firebase.ts';
+import RecipeForm from './components/domain/RecipeForm/RecipeForm.tsx';
+import { RecipeNewPage } from './pages/RecipeNew/RecipeNewPage.tsx';
 
 const RecipesPage = lazy(() => import('./pages/Recipes/Recipes'));
 
+initFirebase();
 const Router = createBrowserRouter([
 	{
 		path: '/',
@@ -42,8 +47,24 @@ const Router = createBrowserRouter([
 				element: <RegisterPage />,
 			},
 			{
-				path: '/account',
+				path: '/account/',
 				element: <AccountPage />,
+			},
+			{
+				path: '/account/:path',
+				element: <AccountPage />,
+			},
+			{
+				path: '/account/:path',
+				element: <AccountPage />,
+			},
+			{
+				path: '/auth/reset/:link',
+				element: <ResetPage />,
+			},
+			{
+				path: '/recipes/create',
+				element: <RecipeNewPage />,
 			},
 		],
 	},

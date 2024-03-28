@@ -19,8 +19,9 @@
 	transition-duration: 1s;
 	transition-property: all;
 
-	overflow: hidden;
 	position: relative;
+	overflow: hidden;
+	transition-behavior: allow-discrete;
 }
 
 @keyframes slide-left {
@@ -36,7 +37,12 @@
 
 .hidden {
 	opacity: 0;
-	transform: translateX(-30vw);
+	transform: translateX(-100%);
+}
+
+.hidden-right {
+	opacity: 0;
+	transform: translateX(150%);
 }
 
 .show {
@@ -63,6 +69,7 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
+	width: 100%;
 	top: 80%;
 	opacity: 0;
 }

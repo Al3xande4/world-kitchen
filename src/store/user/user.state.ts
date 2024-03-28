@@ -1,4 +1,4 @@
-import { User } from '../../interfaces/User';
+import { User } from '../../core/User';
 
 export interface UserState {
 	access_token?: string;
@@ -6,6 +6,9 @@ export interface UserState {
 	user?: User;
 	loginError?: string;
 	registerError?: string;
+	resetError?: string;
+	resetFinished: boolean;
+	authPending: boolean;
 }
 
 export const TOKEN_KEY = 'token';

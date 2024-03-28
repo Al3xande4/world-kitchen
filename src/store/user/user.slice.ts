@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { USER_STATE_KEY, UserState } from './user.state';
 import { loadState } from '../storage';
 import { host } from '../../http';
@@ -8,6 +8,8 @@ import { AxiosError } from 'axios';
 
 const initialState: UserState = loadState<UserState>(USER_STATE_KEY) ?? {
 	isAuth: false,
+	resetFinished: false,
+	authPending: true,
 };
 
 export const login = createAsyncThunk(
@@ -62,6 +64,32 @@ export const checkAuth = createAsyncThunk('user/checkAuth', async () => {
 	return data;
 });
 
+export const forgotPass = createAsyncThunk(
+	'user/forgotPass',
+	async (params: { email: string }) => {
+		const { data } = await host.post('/users/restore', {
+			email: params.email,
+		});
+		return data;
+	}
+);
+
+export const resetPass = createAsyncThunk(
+	'user/resetPass',
+	async (params: { link: string; newPass: string }) => {
+		try {
+			const { data } = await host.post(`/users/reset/${params.link}`, {
+				newPass: params.newPass,
+			});
+			return data;
+		} catch (e) {
+			if (e instanceof AxiosError) {
+				throw new Error(e.response?.data.message);
+			}
+		}
+	}
+);
+
 export const userSlice = createSlice({
 	name: 'user',
 	initialState,
@@ -71,6 +99,12 @@ export const userSlice = createSlice({
 			state.isAuth = false;
 			state.loginError = undefined;
 			state.registerError = undefined;
+			state.resetError = undefined;
+			state.resetFinished = false;
+			state.authPending = true;
+		},
+		resetAuthPending: (state) => {
+			state.authPending = true;
 		},
 	},
 	extraReducers: (builder) => {
@@ -106,18 +140,29 @@ export const userSlice = createSlice({
 			state.user = action.payload.user;
 			state.loginError = undefined;
 			state.registerError = undefined;
+			state.resetError = undefined;
+			state.authPending = false;
 		});
 
 		builder.addCase(checkAuth.rejected, (state) => {
 			state.isAuth = false;
 			state.access_token = undefined;
 			state.user = undefined;
+			state.authPending = false;
 		});
 
 		builder.addCase(logout.fulfilled, (state) => {
 			state.isAuth = false;
 			state.access_token = undefined;
 			state.user = undefined;
+		});
+
+		builder.addCase(resetPass.fulfilled, (state, payload) => {
+			state.resetFinished = true;
+		});
+
+		builder.addCase(resetPass.rejected, (state, payload) => {
+			state.resetError = payload.error.message;
 		});
 	},
 });

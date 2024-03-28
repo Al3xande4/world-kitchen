@@ -34,8 +34,8 @@
 	animation-name: slide-left;
 	animation-timeline: view();
 	animation-fill-mode: forwards;
-	animation-range-start: 100px;
-	animation-range-end: 1000px;
+	animation-range-start: 150px;
+	animation-range-end: 900px;
 }
 
 @keyframes slide-left {

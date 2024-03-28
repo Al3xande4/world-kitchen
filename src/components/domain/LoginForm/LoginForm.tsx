@@ -61,7 +61,7 @@ export function LoginForm({ className }: LoginFormProps) {
 					{loginError}&nbsp;
 					<Link
 						className={styles['forgot-link']}
-						to={'/auth/register'}
+						to={'/auth/login#recover'}
 					>
 						Forgot your password?
 					</Link>
@@ -109,7 +109,7 @@ export function LoginForm({ className }: LoginFormProps) {
 				Sign in
 			</Button>
 
-			<Link className={styles['forgot-link']} to={'/auth/register'}>
+			<Link className={styles['forgot-link']} to={'/auth/login#recover'}>
 				Forgot your password?
 			</Link>
 

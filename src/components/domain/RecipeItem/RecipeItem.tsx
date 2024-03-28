@@ -12,7 +12,12 @@ import {
 	useRef,
 	useState,
 } from 'react';
-import { favActions } from '../../../store/favourites/favourites.slice';
+import {
+	addFavourite,
+	favActions,
+	removeFavourite,
+} from '../../../store/favourites/favourites.slice';
+import { useDebounce } from '../../../hooks/debounce.hook';
 
 function RecipeItem({
 	isFavourite = false,
@@ -32,9 +37,12 @@ function RecipeItem({
 				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						ref.current && ref.current.classList.add(styles.show);
+						ref.current &&
+							ref.current.classList.remove(styles.hidden);
 					} else {
 						ref.current &&
 							ref.current.classList.remove(styles.show);
+						ref.current && ref.current.classList.add(styles.hidden);
 					}
 				});
 			},
@@ -50,20 +58,17 @@ function RecipeItem({
 			ref.current && observer.unobserve(ref.current);
 			offset.current && observer.unobserve(offset.current);
 		};
-	}, [ref]);
+	}, [ref, offset]);
 
-	const toggleFav = useCallback(
-		(e: MouseEvent) => {
-			e.preventDefault();
-			if (isFav) {
-				dispatch(favActions.removeFavourite(recipe.id));
-			} else {
-				dispatch(favActions.addFavourite(recipe.id));
-			}
-			setIsFav((prev) => !prev);
-		},
-		[dispatch, recipe.id, isFav]
-	);
+	const toggleFav = useDebounce((e: MouseEvent) => {
+		e.preventDefault();
+		if (isFav) {
+			dispatch(removeFavourite({ recipeId: recipe.id }));
+		} else {
+			dispatch(addFavourite({ recipeId: recipe.id }));
+		}
+		setIsFav((prev) => !prev);
+	}, 100);
 	return (
 		<article
 			ref={ref}

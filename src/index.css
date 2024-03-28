@@ -1,14 +1,14 @@
 :root {
   --font: 'Open Sans', sans-serif;
 
-  --primary-color: rgb(20, 67, 61);
+  --primary-color: #14433d;
 
   --dark-color: #040404;
   --text-secondary-color: #5B5B5E;
 
   --light-color: #fdfefd;
   --separator-color: #D4D6E0;
-  --neutural-color: #fff7eb;
+  --neutural-color: rgb(255, 247, 235);
   --grey-color: rgb(122, 142, 139);
   font-size: 16px;
 }

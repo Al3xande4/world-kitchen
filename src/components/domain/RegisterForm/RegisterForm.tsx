@@ -92,6 +92,7 @@ export function RegisterForm({ className }: RegisterFormProps) {
 					</Label>
 				</div>
 				<Input
+					required
 					id='username'
 					name='username'
 					placeholder='Username'
@@ -107,6 +108,7 @@ export function RegisterForm({ className }: RegisterFormProps) {
 					</Label>
 				</div>
 				<Input
+					required
 					id='email'
 					name='email'
 					placeholder='Email'
@@ -124,6 +126,7 @@ export function RegisterForm({ className }: RegisterFormProps) {
 					</Label>
 				</div>
 				<Input
+					required
 					id='password'
 					name='password'
 					type='password'
