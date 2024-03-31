@@ -15,7 +15,9 @@ export function Header({ className }: HeaderProps) {
 	const dispatch = useDispatch<AppDispatch>();
 
 	useEffect(() => {
-		dispatch(checkAuth());
+		if (!isAuth) {
+			dispatch(checkAuth());
+		}
 	}, [access_token]);
 
 	return (

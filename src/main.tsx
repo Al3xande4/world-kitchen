@@ -17,6 +17,7 @@ import { ResetPage } from './pages/Reset/Reset.tsx';
 import { initFirebase } from './helpers/firebase.ts';
 import RecipeForm from './components/domain/RecipeForm/RecipeForm.tsx';
 import { RecipeNewPage } from './pages/RecipeNew/RecipeNewPage.tsx';
+import { RecipePage } from './pages/Recipe/RecipePage.tsx';
 
 const RecipesPage = lazy(() => import('./pages/Recipes/Recipes'));
 
@@ -65,6 +66,10 @@ const Router = createBrowserRouter([
 			{
 				path: '/recipes/create',
 				element: <RecipeNewPage />,
+			},
+			{
+				path: '/recipes/:id',
+				element: <RecipePage />,
 			},
 		],
 	},

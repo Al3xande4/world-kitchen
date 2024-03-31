@@ -18,6 +18,7 @@ import {
 	removeFavourite,
 } from '../../../store/favourites/favourites.slice';
 import { useDebounce } from '../../../hooks/debounce.hook';
+import { Link } from 'react-router-dom';
 
 function RecipeItem({
 	isFavourite = false,
@@ -93,18 +94,20 @@ function RecipeItem({
 						<path d='M8.75095 10.0934L5.58045 8.42735L2.40873 10.0934L3.01588 6.56221L0.447662 4.062L3.99338 3.54714L5.58045 0.285568L7.16752 3.54714L10.7132 4.062L8.14502 6.56343L8.75095 10.0934Z' />
 					</svg>
 				</button>
-				<img
-					className={cn(styles.img, {
-						[styles.hidden]: imgLoading,
-					})}
-					onLoad={() => {
-						setImgLoading(false);
-					}}
-					src={recipe.photoUrl}
-					alt='Recipe preview'
-				></img>
+				<Link className={cn(styles.link)} to={`/recipes/${recipe.id}`}>
+					<img
+						className={cn(styles.img, {
+							[styles.hidden]: imgLoading,
+						})}
+						onLoad={() => {
+							setImgLoading(false);
+						}}
+						src={recipe.photoUrl}
+						alt='Recipe preview'
+					></img>
+				</Link>
 				<Tag className={styles.rating}>
-					<span>{recipe.rating ?? 0}</span>
+					<span>{recipe.likedByUsers.length ?? 0}</span>
 					<img src='./star-icon.svg' alt='Star icon'></img>
 				</Tag>
 			</div>

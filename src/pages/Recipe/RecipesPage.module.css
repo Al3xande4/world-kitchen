@@ -1,0 +1,38 @@
+.recipe-section {
+	background-color: rgb(167, 209, 197);
+	height: 100%;
+	padding: 80px 0;
+}
+
+.recipe__inner {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.title {
+	color: var(--primary-color);
+	font-weight: 600;
+	font-size: 2.5rem;
+}
+
+.preview {
+	width: 100%;
+    max-width: 660px;
+	aspect-ratio: 565 / 317;
+    object-fit: cover;
+	border-radius: 1rem;
+
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+
+	margin-bottom: 1rem;
+}
+
+.description {
+	color: var(--primary-color);
+	font-weight: 400;
+	font-size: 1rem;
+	font-style: normal;
+	line-height: 1.5rem;
+
+	margin: 1.5rem 0;
+}

@@ -23,4 +23,7 @@ export interface Recipe {
 	createdAt: Date;
 
 	steps: Step[];
+
+	likedByUsers: User[];
 }
+

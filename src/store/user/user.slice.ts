@@ -61,6 +61,7 @@ export const checkAuth = createAsyncThunk('user/checkAuth', async () => {
 	const { data } = await host.get<LoginResponse>('/users/refresh', {
 		withCredentials: true,
 	});
+	console.log(data)
 	return data;
 });
 

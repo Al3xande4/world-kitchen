@@ -82,7 +82,7 @@
 	cursor: pointer;
 }
 
-.img:hover{
+.link:hover{
 	filter: brightness(85%);
 }
 
@@ -93,6 +93,16 @@
     width: 100%;
     aspect-ratio: 400 / 267;
     object-fit: cover;
+}
+
+.link {
+	max-height: 300px;
+    border-radius: inherit;
+    grid-column: 1 / -1;
+    width: 100%;
+    aspect-ratio: 400 / 267;
+    object-fit: cover;
+	transition: filter 100ms 200ms ease-in;
 }
 
 .rating {

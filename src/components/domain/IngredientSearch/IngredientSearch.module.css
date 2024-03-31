@@ -1,0 +1,37 @@
+.wrapper {
+	position: relative;
+}
+.list {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	list-style: none;
+	padding: 0;
+	gap: 0.25rem;
+
+	opacity: 1;
+	visibility: visible;
+}
+
+.input::placeholder {
+	color: var(--primary-color);
+}
+
+.hidden {
+	opacity: 0;
+	visibility: hidden;
+}
+
+
+.item {
+	background-color: var(--light-color);
+	width: 100%;
+	padding: 1rem;
+	border: 1px solid #85c062;
+	border-radius: 0.25rem;
+
+	box-shadow: 0px 0px 5px #85c062;
+	cursor: pointer;
+
+}

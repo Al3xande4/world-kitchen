@@ -9,6 +9,9 @@ import { Loader } from '../../ui/Loader/Loader';
 import { authHost } from '../../../http';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Textarea } from '../../ui/Textarea/Textarea';
+import { IngredientsForm } from '../IngredientsForm/IngredientsForm';
+import { Recipe } from '../../../core/Recipe';
 
 interface RecipeFormState {
 	title: {
@@ -153,7 +156,7 @@ function RecipeForm() {
 		e.preventDefault();
 		const formData = e.target as typeof e.target & RecipeFormState;
 
-		const formatedSteps =
+		const newSteps =
 			steps.length === 0
 				? []
 				: steps.map((el) => {
@@ -163,8 +166,16 @@ function RecipeForm() {
 								description: el.description,
 							};
 						}
+						return null;
 				  });
 
+		const formatedSteps = [];
+		for (let i = 0; i < newSteps.length; i++) {
+			const item = newSteps[i];
+			if (item) {
+				formatedSteps.push(item);
+			}
+		}
 		try {
 			setLoading(true);
 			const {} = await authHost.post('/recipes', {
@@ -251,15 +262,15 @@ function RecipeForm() {
 				<Label htmlFor='description' className={styles.label}>
 					Recipe Description
 				</Label>
-				<Input
+				<Textarea
 					required
 					placeholder='Tell us why you chose this recipe'
 					id='description'
 					name='description'
 					className={styles.input}
-					type='text'
 				/>
 			</fieldset>
+			<IngredientsForm />
 
 			<h3 className={styles['steps-title']}>how to cook</h3>
 			{steps.map((step, index) => (

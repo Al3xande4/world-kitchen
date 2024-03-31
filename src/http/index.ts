@@ -29,6 +29,7 @@ authHost.interceptors.response.use(
 					withCredentials: true,
 				}
 			);
+			console.log('data', data);
 			saveState('token', {
 				access_token: data.access_token,
 			});

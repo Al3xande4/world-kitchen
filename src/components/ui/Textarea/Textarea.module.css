@@ -1,0 +1,29 @@
+.textarea {
+	padding: 0.85em 1.5em;
+	border-radius: 0.625em;
+	border: none;
+
+	min-width: 100%;
+	margin: 0;
+	background-color: var(--light-color);
+	
+	font-weight: 400;
+	font-size: 18px;
+	outline: none;
+
+	transition: all .2s ease-in-out 0s;
+	border: 2px solid transparent;
+	resize: vertical;
+}
+
+.textarea::placeholder {
+	color: grey;
+}
+
+.textarea:focus{
+	border: 2px solid rgb(0, 139, 112);
+}
+
+.textarea.invalid {
+	border: 2px solid red;
+}

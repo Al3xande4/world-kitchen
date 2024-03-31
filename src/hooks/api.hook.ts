@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { AxiosError } from 'axios';
-import { host } from '../http';
+import { authHost } from '../http';
 
 export function useApi<T>(
 	url: string,
@@ -14,7 +14,7 @@ export function useApi<T>(
 		setIsLoading(true);
 		setTimeout(async () => {
 			try {
-				const { data } = await host[method](`${url}`);
+				const { data } = await authHost[method](`${url}`);
 				setData(data);
 				setIsLoading(false);
 				setError(null);
