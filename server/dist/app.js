@@ -89,7 +89,7 @@ let App = class App {
                 logging: false,
                 migrations: [_1710951505874_UserRefactoring_1.UserRefactoring1710951505874],
                 synchronize: true,
-                entities: [user_entity_1.User, recipe_entity_1.Recipe, token_entity_1.Token, recipe_entity_1.Step],
+                entities: [user_entity_1.User, recipe_entity_1.Recipe, token_entity_1.Token, recipe_entity_1.Step, recipe_entity_1.Ingredient],
             });
             this.server = this.app.listen(this.port);
             this.logger.info('server is listenning');

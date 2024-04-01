@@ -5,7 +5,7 @@ import {
 	getPages,
 } from '../../../store/favourites/favourites.selector';
 import FavouriteItem from '../FavouriteItem/FavouriteItem';
-import { AppDispatch } from '../../../store/store';
+import { AppDispatch, RootState } from '../../../store/store';
 import { useCallback, useEffect, useState } from 'react';
 import { loadFavourites } from '../../../store/favourites/favourites.slice';
 import { Button } from '../../ui/Button/Button';
@@ -16,6 +16,7 @@ export function FavouriteList() {
 	const pages = useSelector(getPages);
 	const dispatch = useDispatch<AppDispatch>();
 	const [page, setPage] = useState(1);
+	const { access_token } = useSelector((state: RootState) => state.user);
 
 	useEffect(() => {
 		dispatch(loadFavourites({ page: page, limit: 3 }));

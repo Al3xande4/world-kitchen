@@ -6,7 +6,7 @@ import styles from './AccountLayout.module.css';
 import { Wrapper } from '../../components/ui/Wrapper/Wrapper';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { userActions } from '../../store/user/user.slice';
+import { checkAuth } from '../../store/user/user.slice';
 
 export enum TABS {
 	Default = '/account/',
@@ -15,16 +15,19 @@ export enum TABS {
 }
 
 export function AccountLayout() {
-	const { user } = useSelector((state: RootState) => state.user);
+	const { user, isAuth } = useSelector((state: RootState) => state.user);
 	const navigate = useNavigate();
 	const dispatch = useDispatch<AppDispatch>();
 	const location = useLocation();
-	console.log(location);
 
 	useEffect(() => {
-		if (!user) {
+		if (!isAuth) {
 			navigate('/');
 		}
+	}, [isAuth]);
+
+	useEffect(() => {
+		dispatch(checkAuth());
 	}, []);
 
 	return (

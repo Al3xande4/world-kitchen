@@ -11,7 +11,7 @@ import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Textarea } from '../../ui/Textarea/Textarea';
 import { IngredientsForm } from '../IngredientsForm/IngredientsForm';
-import { Recipe } from '../../../core/Recipe';
+import { Ingredient } from '../../../core/Ingredient';
 
 interface RecipeFormState {
 	title: {
@@ -36,6 +36,7 @@ function RecipeForm() {
 	const [preview, setPreview] = useState<string | null>(null);
 	const [previewLoading, setPreviewLoading] = useState<boolean>(false);
 	const [loading, setLoading] = useState(false);
+	const [ingredients, setIngredients] = useState<Ingredient[]>([]);
 	const navigate = useNavigate();
 
 	const addStep = () => {
@@ -93,6 +94,13 @@ function RecipeForm() {
 				return el;
 			})
 		);
+	};
+
+	const addIngredient = ({ measure, count, title, imageUrl }: Ingredient) => {
+		setIngredients((prev) => [
+			...prev,
+			{ count, measure, title, imageUrl },
+		]);
 	};
 
 	const handleStepPhotoChange = async (file: File | null, id: number) => {
@@ -182,6 +190,7 @@ function RecipeForm() {
 				previewUrl: preview,
 				title: formData.title.value,
 				recipe: formData.description.value,
+				ingredients,
 				steps: formatedSteps,
 			});
 			setLoading(false);
@@ -270,7 +279,15 @@ function RecipeForm() {
 					className={styles.input}
 				/>
 			</fieldset>
-			<IngredientsForm />
+			<h3 className={styles['steps-title']}>Ingredients</h3>
+			<ul className={styles['ingredients-list']}>
+				{ingredients.map((el, index) => (
+					<li className={styles.ingredient} key={index}>
+						<span>{el.title}</span>, {el.count} {el.measure}
+					</li>
+				))}
+			</ul>
+			<IngredientsForm onAdd={addIngredient} />
 
 			<h3 className={styles['steps-title']}>how to cook</h3>
 			{steps.map((step, index) => (
@@ -295,7 +312,7 @@ function RecipeForm() {
 						</button>
 					</div>
 
-					<Input
+					<Textarea
 						id={`step-details-${index}`}
 						name={`step-details-${index}`}
 						onChange={(e) => {
@@ -303,7 +320,6 @@ function RecipeForm() {
 						}}
 						value={step.description}
 						placeholder='For example, "Clean vegetables, boil water"'
-						type='text'
 					/>
 
 					<fieldset className={styles['img-upload']}>

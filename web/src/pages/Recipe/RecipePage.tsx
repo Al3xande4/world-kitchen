@@ -7,6 +7,7 @@ import { Loader } from '../../components/ui/Loader/Loader';
 import styles from './RecipesPage.module.css';
 import { Heading } from '../../components/ui/Heading/Heading';
 import { StepList } from '../../components/domain/StepList/StepList';
+import { IngredientsList } from '../../components/domain/IngredientsList/IngredientsList';
 
 export function RecipePage() {
 	const { id } = useParams();
@@ -34,7 +35,8 @@ export function RecipePage() {
 							{recipe.title}
 						</Heading>
 						<p className={styles.description}>{recipe.recipe}</p>
-						<StepList steps={recipe.steps}/>
+						<IngredientsList ingredients={recipe.ingredients} />
+						<StepList steps={recipe.steps} />
 					</div>
 				)}
 			</Wrapper>

@@ -1,0 +1,25 @@
+.wrapper {
+	display: grid;
+	grid-template-columns: 1fr 1rem 1fr;
+	grid-template-rows: auto 1rem auto;
+}
+
+.search {
+	grid-column: 1 / -1;
+	grid-row: 1 / 2;
+}
+
+.count {
+	grid-column: 1 / 2;
+	grid-row: 3 / 4;
+}
+
+.measure {
+	grid-column: 3 / 4;
+	grid-row: 3 / 4;
+}
+
+.btn {
+	margin-top: 1rem;
+	border-radius: 0.5rem;
+}

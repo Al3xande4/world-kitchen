@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Step = exports.Comment = exports.Recipe = void 0;
+exports.Ingredient = exports.Step = exports.Comment = exports.Recipe = void 0;
 const typeorm_1 = require("typeorm");
 const user_entity_1 = require("../users/user.entity");
 let Recipe = class Recipe extends typeorm_1.BaseEntity {
@@ -66,6 +66,12 @@ __decorate([
     (0, typeorm_1.OneToMany)(() => Step, (step) => step.recipe, { cascade: true }),
     __metadata("design:type", Array)
 ], Recipe.prototype, "steps", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => Ingredient, (ingredient) => ingredient.recipe, {
+        cascade: true,
+    }),
+    __metadata("design:type", Array)
+], Recipe.prototype, "ingredients", void 0);
 Recipe = __decorate([
     (0, typeorm_1.Entity)()
 ], Recipe);
@@ -95,4 +101,34 @@ Step = __decorate([
     (0, typeorm_1.Entity)()
 ], Step);
 exports.Step = Step;
+let Ingredient = class Ingredient extends typeorm_1.BaseEntity {
+};
+__decorate([
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    __metadata("design:type", Number)
+], Ingredient.prototype, "id", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Ingredient.prototype, "title", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Ingredient.prototype, "measure", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Ingredient.prototype, "imageUrl", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'float' }),
+    __metadata("design:type", Number)
+], Ingredient.prototype, "count", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => Recipe, (recipe) => recipe.ingredients),
+    __metadata("design:type", Recipe)
+], Ingredient.prototype, "recipe", void 0);
+Ingredient = __decorate([
+    (0, typeorm_1.Entity)()
+], Ingredient);
+exports.Ingredient = Ingredient;
 //# sourceMappingURL=recipe.entity.js.map

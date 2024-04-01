@@ -7,14 +7,12 @@ import { AppDispatch } from '../../../store/store';
 import {
 	MouseEvent,
 	memo,
-	useCallback,
 	useEffect,
 	useRef,
 	useState,
 } from 'react';
 import {
 	addFavourite,
-	favActions,
 	removeFavourite,
 } from '../../../store/favourites/favourites.slice';
 import { useDebounce } from '../../../hooks/debounce.hook';

@@ -30,13 +30,7 @@ export class RecipeService implements IRecipeService {
 		newRecipe.recipe = dto.recipe;
 		newRecipe.photoUrl = dto.previewUrl;
 		newRecipe.steps = dto.steps;
-		const firebaseConfig = {
-			storageBucket: 'gs://world-kitchen-83f19.appspot.com',
-		};
-
-		// if (!firebase.apps.length) {
-		//     const app = firebase.initializeApp(firebaseConfig);
-		// }
+		newRecipe.ingredients = dto.ingredients;
 		return await this.recipeRepository.create(newRecipe);
 	}
 

@@ -30,14 +30,14 @@ let RecipeRepository = class RecipeRepository {
                 const skip = (page - 1) * limit;
                 return yield recipe_entity_1.Recipe.find({
                     order: { id: 'ASC' },
-                    relations: ['likedByUsers', 'steps'],
+                    relations: ['likedByUsers', 'steps', 'ingredients'],
                     take: limit,
                     skip,
                 });
             }
             return yield recipe_entity_1.Recipe.find({
                 order: { id: 'ASC' },
-                relations: ['likedByUsers', 'steps'],
+                relations: ['likedByUsers', 'steps', 'ingredients'],
             });
         });
     }
@@ -45,7 +45,7 @@ let RecipeRepository = class RecipeRepository {
         return __awaiter(this, void 0, void 0, function* () {
             return yield recipe_entity_1.Recipe.findOne({
                 where: { id },
-                relations: ['likedByUsers', 'steps'],
+                relations: ['likedByUsers', 'steps', 'ingredients'],
             });
         });
     }
@@ -53,12 +53,13 @@ let RecipeRepository = class RecipeRepository {
         return __awaiter(this, void 0, void 0, function* () {
             const recipe = yield recipe_entity_1.Recipe.findOne({
                 where: { id },
-                relations: ['steps'],
+                relations: ['steps', 'ingredients'],
             });
             if (!recipe) {
                 return null;
             }
             yield recipe_entity_1.Step.remove(recipe.steps);
+            yield recipe_entity_1.Ingredient.remove(recipe.ingredients);
             return yield recipe_entity_1.Recipe.delete({ id });
         });
     }

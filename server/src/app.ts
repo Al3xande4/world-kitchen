@@ -13,7 +13,7 @@ import { createConnection } from 'typeorm';
 import { User } from './users/user.entity';
 import cors from 'cors';
 import { RecipeController } from './recipes/recipe.controller';
-import { Recipe, Step } from './recipes/recipe.entity';
+import { Ingredient, Recipe, Step } from './recipes/recipe.entity';
 import { UserRefactoring1710951505874 } from './migrations/1710951505874-UserRefactoring';
 import { Token } from './token/token.entity';
 import cookieParser from 'cookie-parser';
@@ -73,6 +73,19 @@ export class App {
 		this.useRoutes();
 		this.useExceptionFilters();
 
+		// const conn = await createConnection({
+		// 	type: 'postgres',
+		// 	host: 'localhost',
+		// 	database: 'recipeapp',
+		// 	username: 'postgres',
+		// 	password: 'postgres',
+		// 	port: 5432,
+		// 	logging: false,
+		// 	migrations: [UserRefactoring1710951505874],
+		// 	synchronize: true,
+		// 	entities: [User, Recipe, Token, Step, Ingredient],
+		// });
+
 		const conn = await createConnection({
 			type: 'postgres',
 			host: this.configService.get('PGHOST'),
@@ -84,7 +97,7 @@ export class App {
 			logging: false,
 			migrations: [UserRefactoring1710951505874],
 			synchronize: true,
-			entities: [User, Recipe, Token, Step],
+			entities: [User, Recipe, Token, Step, Ingredient],
 		});
 
 		// admin.initializeApp({

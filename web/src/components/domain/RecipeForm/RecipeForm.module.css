@@ -217,3 +217,24 @@ fieldset {
     font-size: 1rem;
     font-weight: 700;
 }
+
+.ingredients-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0;
+}
+
+.ingredient {
+    border-bottom: 1px solid var(--primary-color);
+    padding: 1rem 1rem;
+    color: var(--primary-color);
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.ingredient > span{
+    font-weight: 800;
+    text-transform: capitalize;
+}

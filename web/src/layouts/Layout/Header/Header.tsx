@@ -15,6 +15,10 @@ export function Header({ className }: HeaderProps) {
 	const dispatch = useDispatch<AppDispatch>();
 
 	useEffect(() => {
+		dispatch(checkAuth());
+	}, []);
+
+	useEffect(() => {
 		if (!isAuth) {
 			dispatch(checkAuth());
 		}

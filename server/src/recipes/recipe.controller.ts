@@ -51,7 +51,7 @@ export class RecipeController
 				path: '/:id',
 				method: 'get',
 				func: this.get,
-				middlewares: [new AuthGuard()],
+				middlewares: [],
 			},
 			{
 				path: '/like/:id',

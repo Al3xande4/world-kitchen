@@ -1,0 +1,7 @@
+.select {
+	background-color: var(--light-color);
+}
+
+.select:focus {
+	border-color: var(--primary-color);
+}

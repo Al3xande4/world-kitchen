@@ -60,7 +60,7 @@ let RecipeController = class RecipeController extends base_controller_1.BaseCont
                 path: '/:id',
                 method: 'get',
                 func: this.get,
-                middlewares: [new auth_guard_1.AuthGuard()],
+                middlewares: [],
             },
             {
                 path: '/like/:id',

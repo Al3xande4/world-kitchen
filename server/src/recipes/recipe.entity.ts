@@ -1,4 +1,3 @@
-import { hash, compare } from 'bcryptjs';
 import {
 	BaseEntity,
 	Column,
@@ -51,6 +50,11 @@ export class Recipe extends BaseEntity {
 
 	@OneToMany(() => Step, (step) => step.recipe, { cascade: true })
 	steps: Step[];
+
+	@OneToMany(() => Ingredient, (ingredient) => ingredient.recipe, {
+		cascade: true,
+	})
+	ingredients: Ingredient[];
 }
 
 export class Comment {}
@@ -67,5 +71,26 @@ export class Step extends BaseEntity {
 	imageUrl: string;
 
 	@ManyToOne(() => Recipe, (recipe) => recipe.steps)
+	recipe: Recipe;
+}
+
+@Entity()
+export class Ingredient extends BaseEntity {
+	@PrimaryGeneratedColumn()
+	id: number;
+
+	@Column()
+	title: string;
+
+	@Column()
+	measure: string;
+
+	@Column()
+	imageUrl: string;
+
+	@Column({ type: 'float' })
+	count: number;
+
+	@ManyToOne(() => Recipe, (recipe) => recipe.ingredients)
 	recipe: Recipe;
 }

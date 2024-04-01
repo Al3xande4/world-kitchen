@@ -1,3 +1,4 @@
+import { Ingredient } from './Ingredient';
 import { Step } from './Step';
 import { User } from './User';
 
@@ -25,5 +26,6 @@ export interface Recipe {
 	steps: Step[];
 
 	likedByUsers: User[];
-}
 
+	ingredients: Ingredient[];
+}

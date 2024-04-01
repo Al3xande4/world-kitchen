@@ -46,9 +46,7 @@ let RecipeService = class RecipeService {
             newRecipe.recipe = dto.recipe;
             newRecipe.photoUrl = dto.previewUrl;
             newRecipe.steps = dto.steps;
-            const firebaseConfig = {
-                storageBucket: 'gs://world-kitchen-83f19.appspot.com',
-            };
+            newRecipe.ingredients = dto.ingredients;
             return yield this.recipeRepository.create(newRecipe);
         });
     }

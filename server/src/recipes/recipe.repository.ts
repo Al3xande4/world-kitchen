@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import { Recipe, Step } from './recipe.entity';
+import { Ingredient, Recipe, Step } from './recipe.entity';
 import { IRecipeRepository } from './recipe.repository.interface';
 import { User } from '../users/user.entity';
 
@@ -16,33 +16,34 @@ export class RecipeRepository implements IRecipeRepository {
 			const skip = (page - 1) * limit;
 			return await Recipe.find({
 				order: { id: 'ASC' },
-				relations: ['likedByUsers', 'steps'],
+				relations: ['likedByUsers', 'steps', 'ingredients'],
 				take: limit,
 				skip,
 			});
 		}
 		return await Recipe.find({
 			order: { id: 'ASC' },
-			relations: ['likedByUsers', 'steps'],
+			relations: ['likedByUsers', 'steps', 'ingredients'],
 		});
 	}
 
 	async get(id: number): Promise<any> {
 		return await Recipe.findOne({
 			where: { id },
-			relations: ['likedByUsers', 'steps'],
+			relations: ['likedByUsers', 'steps', 'ingredients'],
 		});
 	}
 
 	async delete(id: number): Promise<any> {
 		const recipe = await Recipe.findOne({
 			where: { id },
-			relations: ['steps'],
+			relations: ['steps', 'ingredients'],
 		});
 		if (!recipe) {
 			return null;
 		}
 		await Step.remove(recipe.steps);
+		await Ingredient.remove(recipe.ingredients);
 		return await Recipe.delete({ id });
 	}
 }

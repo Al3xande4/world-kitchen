@@ -1,0 +1,35 @@
+.ingredient {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+	width: 100%;
+	border-bottom: 2px dashed var(--primary-color);
+	color: var(--primary-color);
+
+	font-size: 1rem;
+	font-weight: 400;
+
+	padding: 0 1rem;
+	padding-bottom: 1rem;
+}
+
+.text > span {
+	font-weight: 800;
+	text-transform: capitalize;
+}
+
+.text {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.img {
+	background-color: var(--light-color);
+	padding: 10px;
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	object-fit: cover;
+	z-index: 10;
+}

@@ -23,13 +23,13 @@ authHost.interceptors.response.use(
 		const originalRequest = error.config;
 		if (originalRequest && !originalRequest._isRetry) {
 			originalRequest._isRetry = true;
+			console.log(originalRequest)
 			const { data } = await axios.get(
 				'http://localhost:3000/users/refresh',
 				{
 					withCredentials: true,
 				}
 			);
-			console.log('data', data);
 			saveState('token', {
 				access_token: data.access_token,
 			});

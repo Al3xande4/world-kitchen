@@ -1,8 +1,12 @@
 .wrapper {
 	position: relative;
 }
+
+.autocomplete {
+	background-color: var(--light-color);	
+	width: 100%;
+}
 .list {
-	position: absolute;
 	display: flex;
 	flex-direction: column;
 	width: 100%;
@@ -12,6 +16,8 @@
 
 	opacity: 1;
 	visibility: visible;
+	position: absolute;
+	z-index: 10;
 }
 
 .input::placeholder {

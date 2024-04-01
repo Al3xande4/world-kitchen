@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
-import { Step } from '../recipe.entity';
+import { Ingredient, Step } from '../recipe.entity';
 
 export class RecipeCreateDto {
 	@IsNotEmpty()
@@ -14,4 +14,6 @@ export class RecipeCreateDto {
 	about?: string;
 
 	steps: Step[];
+
+	ingredients: Ingredient[];
 }
