@@ -64,7 +64,7 @@ const Router = createBrowserRouter([
 				element: <ResetPage />,
 			},
 			{
-				path: '/recipes/create',
+				path: '/new',
 				element: <RecipeNewPage />,
 			},
 			{

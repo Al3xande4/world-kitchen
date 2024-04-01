@@ -78,7 +78,7 @@ export function UserRecipes() {
 					<p className={styles.text}>
 						You haven't made any recipes yet.
 					</p>
-					<Link to={'/recipes/create'}>
+					<Link to={'/new'}>
 						<Button fillType='filled'>Create Now</Button>
 					</Link>
 				</section>

@@ -27,16 +27,28 @@ export function Header({ className }: HeaderProps) {
 	return (
 		<header className={cn(styles.header, className)}>
 			<Wrapper className={styles.container}>
-				<NavLink
-					className={({ isActive }) =>
-						cn(styles['link'], {
-							[styles.active]: isActive,
-						})
-					}
-					to={'/recipes'}
-				>
-					World Kitchen
-				</NavLink>
+				<nav className={styles['left-nav']}>
+					<NavLink
+						className={({ isActive }) =>
+							cn(styles['link'], {
+								[styles.active]: isActive,
+							})
+						}
+						to={'/recipes'}
+					>
+						World Kitchen
+					</NavLink>
+					<NavLink
+						className={({ isActive }) =>
+							cn(styles['link'], {
+								[styles.active]: isActive,
+							})
+						}
+						to={'/new'}
+					>
+						Create Recipe
+					</NavLink>
+				</nav>
 
 				<img
 					alt='Logo'
